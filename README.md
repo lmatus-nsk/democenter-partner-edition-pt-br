@@ -102,8 +102,30 @@ Substitua `SEU_DOMINIO` e o caminho se usar outro.
 
 ```bash
 sudo mkdir -p /var/www/democenter
-sudo git clone https://github.com/lmatus-nsk/democenter-partner-edition.git /var/www/democenter
+sudo git clone https://github.com/lmatus-nsk/democenter-partner-edition-pt-br.git /var/www/democenter
+```
 
+O repositório é privado, então o `git clone` vai pedir credenciais:
+
+- **Username:** seu **usuário do GitHub** (ex.: `joao-silva`), **não** o seu e-mail.
+- **Password:** um **Personal Access Token (classic)**, **não** a senha da conta. O GitHub não aceita senha via HTTPS.
+
+**Como gerar o token:**
+
+1. No GitHub, acesse **Settings → Developer settings → Personal access tokens → Tokens (classic)**.
+2. Clique em **Generate new token (classic)**.
+3. Dê um nome (ex.: `democenter`) e defina a expiração.
+4. Marque o escopo **`repo`**.
+5. Clique em **Generate token** e copie o valor (começa com `ghp_`). Ele só aparece uma vez.
+6. Cole o token no campo `Password` do `git clone`.
+
+> [!WARNING]
+> Gere o token na **sua própria conta**. Use o tipo **classic**: tokens *fine-grained* não acessam repositórios pessoais de terceiros nos quais você é colaborador.
+
+> [!IMPORTANT]
+> Antes de clonar, aceite o convite de colaborador (enviado por e-mail ou em `https://github.com/lmatus-nsk/democenter-partner-edition-pt-br/invitations`). Sem isso, o Git retorna `Repository not found`.
+
+```bash
 sudo chown -R www-data:www-data /var/www/democenter
 ```
 
